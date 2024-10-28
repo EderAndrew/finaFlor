@@ -13,6 +13,18 @@ export const findUser = async (name: string) => {
   return user;
 };
 
+export const findUserById = async (id: number) => {
+  const user = await prisma.user.findFirst({
+    where: {
+      id,
+    },
+  });
+
+  if (!user) return null;
+
+  return user;
+};
+
 export const postUser = async (info: IUser) => {
   const user = await prisma.user.create({
     data: {

@@ -30,6 +30,7 @@ model Girl {
   name        String
   description Boolean
   day         DateTime
+  selected    Boolean   @default(false)
   createdAt   DateTime?
   updatedAt   DateTime  @default(now())
   Pic         Pic[]
@@ -40,6 +41,7 @@ model Girl {
 model Pic {
   id        Int       @id @default(autoincrement())
   pic_name  String
+  selected  Boolean   @default(false)
   createdAt DateTime?
   updatedAt DateTime  @default(now())
   girl_id   Int
