@@ -28,8 +28,8 @@ model User {
 model Girl {
   id          Int       @id @default(autoincrement())
   name        String
-  description Boolean
-  day         DateTime
+  description Boolean   @default(false)
+  day         DateTime  @default(now())
   selected    Boolean   @default(false)
   createdAt   DateTime?
   updatedAt   DateTime  @default(now())

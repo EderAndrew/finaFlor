@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
 import { findUser } from "../services/userService";
 import { compare } from "bcrypt-ts";
-import { createJWT } from "../utils/jwt";
 import { loginSchema } from "../schemas/loginSchema";
+import { createJWT } from "../utils/jwt";
 
 export const login: RequestHandler = async (req, res): Promise<any> => {
   try {
