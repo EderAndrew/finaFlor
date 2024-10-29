@@ -25,9 +25,10 @@ mainRouter.get("/ping/private", verifyJWT, (req: Request, res: Response) => {
 
 mainRouter.get("/upload", (req, res) => {
   res.send(`
-    <h2>With <code>"express"</code> npm package</h2>
-    <form action="/api/upload" enctype="multipart/form-data" method="post">
-      <div>File: <input type="file" name="upload" multiple="multiple"></div>
+   <h2>With <code>"express"</code> npm package</h2>
+    <form action="/girl/create" enctype="multipart/form-data" method="post">
+      <div>Text field title: <input type="text" name="name" /></div>
+      <div>File: <input type="file" name="images" multiple="multiple"></div>
       <input type="submit" value="Upload">
     </form>
   `);

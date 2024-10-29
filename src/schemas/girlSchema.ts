@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const girlSchema = z.object({
   id: z.number().optional(),
-  name: z.string({ message: "Nome é obrigatório." }),
+  name: z.string().optional(),
   description: z.boolean().optional(),
   day: z.date().optional(),
   selected: z.boolean().optional(),
