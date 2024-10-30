@@ -1,3 +1,5 @@
+import { IPic } from "./picinterface";
+
 export interface IGirl {
   id?: number;
   name: string;
@@ -6,4 +8,5 @@ export interface IGirl {
   selected: boolean;
   createdAt?: Date;
   updatedAt: Date;
+  pics: [IPic];
 }

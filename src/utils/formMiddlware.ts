@@ -1,6 +1,7 @@
 import { NextFunction, request, Request, Response } from "express";
 import formidable from "formidable";
 import { ExtendFileRequest } from "../interfaces/extend-request";
+import { IGirl } from "../interfaces/girlinterface";
 export const formMiddleWare = async (req: ExtendFileRequest, res: Response, next: NextFunction) => {
   try {
     const form = formidable({
@@ -16,8 +17,12 @@ export const formMiddleWare = async (req: ExtendFileRequest, res: Response, next
       },
     });
     const files = [];
+    const fields = [];
 
     form
+      .on("field", (name, value) => {
+        fields.push({ name, value });
+      })
       .on("file", (name, file) => {
         files.push({ name, file });
       })
@@ -30,7 +35,7 @@ export const formMiddleWare = async (req: ExtendFileRequest, res: Response, next
         next(err);
         return;
       }
-
+      req.fields = fields;
       req.files = files;
 
       next();
