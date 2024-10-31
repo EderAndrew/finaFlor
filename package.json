@@ -7,7 +7,8 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
-    "dev": "node --import=tsx --watch --env-file=.env ./src/server.ts"
+    "dev": "node --import=tsx --watch --env-file=.env ./src/server.ts",
+    "prod": "set NODE_ENV=production && node --import=tsx --env-file=.env ./src/server.ts"
   },
   "keywords": [],
   "author": "",

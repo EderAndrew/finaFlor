@@ -39,6 +39,9 @@ export const getGirls = async () => {
     include: {
       Pic: true,
     },
+    orderBy: {
+      name: "asc",
+    },
   });
 
   if (!girls) return null;
