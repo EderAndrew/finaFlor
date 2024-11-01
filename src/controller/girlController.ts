@@ -14,10 +14,11 @@ export const createGirl: RequestHandler = async (req: ExtendFileRequest, res): P
   try {
     //PEGA AS REQUISIÇÕES DO FORMULARIO
     const EGirl = {
+      name_id: req.fields?.name_id?.[0] as string,
       name: req.fields?.name?.[0] as string,
-      description: false,
+      description: true,
       day: new Date(),
-      selected: false,
+      selected: true,
       updatedAt: new Date(),
       createdAt: new Date(),
     };
@@ -36,7 +37,8 @@ export const createGirl: RequestHandler = async (req: ExtendFileRequest, res): P
         .toFormat("webp")
         .toFile(`./public/media/${files.images[x].originalFilename?.split(".")[0]}.webp`);
       images.push({
-        pic_name:
+        pic_name: req.fields?.name?.[0] as string,
+        pic_url:
           process.env.NODE_ENV === "production"
             ? `${process.env.URL_IMG_PROD}/${files.images[x].originalFilename?.split(".")[0]}.webp`
             : `${process.env.URL_IMG_DEV}/${files.images[x].originalFilename?.split(".")[0]}.webp`,
@@ -53,6 +55,7 @@ export const createGirl: RequestHandler = async (req: ExtendFileRequest, res): P
     if (haveGirl) return res.status(400).json({ message: "Ja existe uma garota com este nome." });
 
     const data = {
+      name_id: safeData.data.name_id,
       name: safeData.data.name,
       description: safeData.data.description,
       day: safeData.data.day,
