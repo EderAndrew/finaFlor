@@ -14,7 +14,7 @@ export const createGirl: RequestHandler = async (req: ExtendFileRequest, res): P
   try {
     //PEGA AS REQUISIÇÕES DO FORMULARIO
     const EGirl = {
-      name_id: req.fields?.name_id?.[0] as string,
+      name_id: req.fields?.name_id?.[0].toLowerCase() as string,
       name: req.fields?.name?.[0] as string,
       description: true,
       day: new Date(),
@@ -50,7 +50,7 @@ export const createGirl: RequestHandler = async (req: ExtendFileRequest, res): P
     }
 
     //vERIFICA SE JÁ EXISTE UMA GAROTA COM O NOME
-    const haveGirl = await findGirlByName(safeData.data.name as string);
+    const haveGirl = await findGirlByName(safeData.data.name_id as string);
 
     if (haveGirl) return res.status(400).json({ message: "Ja existe uma garota com este nome." });
 

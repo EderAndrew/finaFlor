@@ -5,7 +5,7 @@ import { prisma } from "../utils/prisma";
 export const findGirlByName = async (name: string) => {
   const girl = await prisma.girl.findFirst({
     where: {
-      name,
+      name_id: name,
     },
   });
 
@@ -17,6 +17,7 @@ export const findGirlByName = async (name: string) => {
 export const newGirl = async (payload: IGirl) => {
   const girl = await prisma.girl.create({
     data: {
+      name_id: payload.name_id,
       name: payload.name,
       description: payload.description,
       day: payload.day,

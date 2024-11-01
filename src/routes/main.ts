@@ -12,13 +12,13 @@ mainRouter.post("/login", authController.login);
 
 mainRouter.post("/user", verifyJWT, userController.createUser);
 
-mainRouter.post("/girl", formMiddleWare, girlController.createGirl);
-mainRouter.get("/girls", girlController.getAllGirls);
+mainRouter.post("/girl", verifyJWT, formMiddleWare, girlController.createGirl);
+mainRouter.get("/girls", verifyJWT, girlController.getAllGirls);
 //mainRouter.get("/girl/:id", verifyJWT, girlController.getOneGirl);
 //mainRouter.put("/girl/:id", verifyJWT, girlController.updateGirl);
 
-mainRouter.put("/photo/:id", photoController.updatePhotoStatus);
-mainRouter.get("/photos", photoController.getAllSelectedPhotos);
+mainRouter.put("/photo/:id", verifyJWT, photoController.updatePhotoStatus);
+mainRouter.get("/photos", verifyJWT, photoController.getAllSelectedPhotos);
 
 mainRouter.get("/ping", (req: Request, res: Response) => {
   res.status(200).json({ pong: true });

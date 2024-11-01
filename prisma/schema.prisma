@@ -27,7 +27,7 @@ model User {
 
 model Girl {
   id          Int       @id @default(autoincrement())
-  name_id     String
+  name_id     String    @unique
   name        String
   description Boolean   @default(false)
   day         DateTime  @default(now())
