@@ -1,3 +1,4 @@
+import { IPic } from "../interfaces/picinterface";
 import { prisma } from "../utils/prisma";
 
 export const changeStatus = async (id: number, selected: boolean) => {
@@ -6,7 +7,20 @@ export const changeStatus = async (id: number, selected: boolean) => {
       id,
     },
     data: {
-      selected,
+      selected: selected,
+      updatedAt: new Date(),
+    },
+  });
+
+  if (!photo) return null;
+
+  return photo;
+};
+
+export const allSelectedPhotos = async () => {
+  const photo = await prisma.pic.findMany({
+    where: {
+      selected: true,
     },
   });
 

@@ -18,6 +18,7 @@ mainRouter.get("/girls", girlController.getAllGirls);
 //mainRouter.put("/girl/:id", verifyJWT, girlController.updateGirl);
 
 mainRouter.put("/photo/:id", photoController.updatePhotoStatus);
+mainRouter.get("/photos", photoController.getAllSelectedPhotos);
 
 mainRouter.get("/ping", (req: Request, res: Response) => {
   res.status(200).json({ pong: true });
